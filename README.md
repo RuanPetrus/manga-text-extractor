@@ -15,13 +15,14 @@ pip install -U scikit-learn
 # Usage
 You need first to train the model.  
 The training data is organized in two folders, the first one is _train\_images_
-and the other is _text\_images_, your full image must be in the _train_\image_ and a image with only the text must be inside _text\_images_ by the same name.
+and the other is _text\_images_, your full image must be in the _train\_image_ and a image with only the text must be inside _text\_images_ by the same name.
 ``` sh
 python main.py train
 ```
 
 In order to extract the text from a image you have to run
 ``` sh
+python main.py extract <image-path>
 python main.py extract ./source_images/8.jpg
 ```
 
