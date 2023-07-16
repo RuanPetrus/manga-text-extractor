@@ -7,8 +7,6 @@ from multilayer import MultiLayer
 
 from typing import Any
 
-# TRAIN_IMAGE_FOLDER  = "./train_teste/"
-# TEXT_IMAGE_FOLDER   = "./text_teste/"
 TRAIN_IMAGE_FOLDER  = "./train_images/"
 TEXT_IMAGE_FOLDER   = "./text_images/"
 SOURCE_IMAGES = "./source_images/"
