@@ -28,4 +28,3 @@ python main.py extract ./source_images/8.jpg
 
 # TODO
 - Add more images to train data, the original paper has gone to up 14
-- Implement the two layer system describe in the paper
