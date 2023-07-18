@@ -18,7 +18,7 @@ def train_new_model() -> None:
       os.mkdir(MODELS_PATH)
    model = MultiLayer(TRAIN_IMAGE_FOLDER, TEXT_IMAGE_FOLDER)
    model.train()
-   with open(MODELS_PATH + "onelayer_5x7_berserk", "wb") as f:
+   with open(MODELS_PATH + "other", "wb") as f:
       pickle.dump(model, f)
 
    print("SUCESS: model has been trained")
