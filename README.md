@@ -13,18 +13,42 @@ pip install -U scikit-learn
 ```
 
 # Usage
-You need first to train the model.  
-The training data is organized in two folders, the first one is _train\_images_
-and the other is _text\_images_, your full image must be in the _train\_image_ and a image with only the text must be inside _text\_images_ by the same name.
-``` sh
-python main.py train
-```
+The default model is the multilayer 13x13 berserk. So it only extract Berserk images.
 
-In order to extract the text from a image you have to run
+In order to extract the text from a image you can run
 ``` sh
 python main.py extract <image-path>
-python main.py extract ./source_images/8.jpg
+python main.py extract ./source_images/berserk/6.jpg
+```
+
+# Changing the model
+The models are located in the _models_ folder.  
+If you want to change the model you can change the following line in _predict_ in the main file.
+``` python
+def predict(path: str) -> None:
+    with open(MODELS_PATH + "<your-model>", "rb") as f:
+        model = pickle.load(f)
+    ...
+```
+Example:
+``` python
+def predict(path: str) -> None:
+    with open(MODELS_PATH + "multilayer_13x13_onepiece", "rb") as f:
+        model = pickle.load(f)
+    ...
+```
+
+This will only works for models with 13x13 operators, if you want to change the size of operators you will have to change the following lines in the _multilayer_ file:
+
+``` python
+...
+OPERATOR_HEIGHT = 13
+OPERATOR_WIDTH  = 13
+...
 ```
 
 # TODO
-- Add more images to train data, the original paper has gone to up 14
+- Neural nets?
+- Support vector machines ?
+- Better way to abstract and store models
+- Refactor array code

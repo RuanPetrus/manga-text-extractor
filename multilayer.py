@@ -80,6 +80,14 @@ class MultiLayer:
 
         return self.second_layer_op.predict(second_layer_input)
 
+    def print_tree_depth(self) -> None:
+        print("Tree depth: ")
+        print("    First Layer: ")
+        for i, t in enumerate(self.first_layer_ops):
+            print(f"        [{i}] -> {t.get_depth()}")
+        print("    Second Layer: ")
+        print(f"        [0] -> {self.second_layer_op.get_depth()}")
+
 def trim_array_borders(a: Array, window_height: int, window_width: int) -> Array:
     h, w = a.shape
     horz_border = window_width//2
@@ -174,25 +182,3 @@ def slice_middle(arr: Array) -> Array:
     fh = ceil(h, 10)
     fw = ceil(w, 10)
     return flatten_array(arr[:, fh:-fh, fw:-fw], [1, 2])
-
-if __name__ == "__main__":
-   arr = np.array([
-       [
-        [ 1, 2, 3, 4, 5, 6],
-        [ 1, 2, 3, 4, 5, 9],
-        [ 1, 2, 3, 4, 5, 6],
-        [ 1, 2, 3, 5, 7, 6],
-       ],
-       [
-        [ 1, 2, 3, 4, 5, 6],
-        [ 1, 2, 3, 4, 5, 9],
-        [ 1, 2, 3, 4, 5, 6],
-        [ 1, 2, 3, 5, 7, 6],
-       ],
-   ]) 
-
-   inputs = slice_array_in_windows(arr, 3, 3)
-
-
-
-   

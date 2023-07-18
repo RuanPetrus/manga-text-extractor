@@ -23,17 +23,14 @@ class OneLayer:
         text_image_files =  [self.text_image_folder + f for f in os.listdir(self.text_image_folder)]
         image_files.sort()
         text_image_files.sort()
-        input_images = np.array([
+        input_images = np.concatenate([
             input_image_from_path(f)
             for f in image_files
         ])
-        expected_output = np.array([
+        expected_output = np.concatenate([
             output_image_from_path(f)
             for f in text_image_files
         ])
-
-        input_images = flatten_array(input_images, [0, 1])
-        expected_output = expected_output.flatten()
 
         clf = tree.DecisionTreeClassifier()
         clf = clf.fit(input_images, expected_output)
@@ -46,6 +43,10 @@ class OneLayer:
         only_text_image = reconstruct_image(Y, h, w)
         only_text_image[only_text_image == 1] = 255
         return only_text_image
+
+    def print_tree_depth(self) -> None:
+        print(f"Tree depth: {self.clf.get_depth()}")
+        
         
 def slice_array_in_windows(a: Array, window_height: int, window_width: int) -> Array:
     b = sliding_window_view(a, (window_height, window_width))
