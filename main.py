@@ -38,6 +38,8 @@ def predict(path: str) -> None:
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
+    print("Image created in:", "only_text.png")
+
 
 def usage() -> None:
     print("Usage:")
